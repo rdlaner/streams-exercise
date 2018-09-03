@@ -1,3 +1,4 @@
+"""Streams Exercise"""
 
 
 class StreamProcessor(object):
@@ -6,14 +7,14 @@ class StreamProcessor(object):
         1. You initialize an instance with a stream of digits
           (AKA: file-like object, instance of StringIO), and
           store it as an instance variable.
-        
+
           eg: f = io.StringIO("234761640930110349378289194")
               my_stream_processor = MyStreamProcessor(f)
-              
+
         2. You call a `process` method of my_stream_processor.
-        
+
           This method:
-          
+
             1. Reads two digits at a time from the beginning of the stream
             2. Converts the two digits into a number, and adds that number
                to a running total.
@@ -47,21 +48,19 @@ class StreamProcessor(object):
 
     def process(self):
         """
-        TODO: Implement the `process` method, as described above.
-        
+        Implements the `process` method, as described above.
+
         :return: int
         """
-
-        count = 0  # How many two-digit numbers the `process` method has added
-                   # together.
+        count = 0  # How many two-digit numbers the `process` method has added together.
         total = 0  # The running total of sums.
 
-        # TODO: WRITE CODE HERE:
-
-        # Just some example syntax, you can read two digits from the head of the
-        # stream using the following code:
-        #
-        # digits = self._stream.read(2)
-
+        while count < 10 and total < 200:
+            digits = self._stream.read(2)
+            if len(digits) == 2:
+                count += 1
+                total += int(digits)
+            else:
+                break
 
         return count
